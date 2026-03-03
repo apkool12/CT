@@ -3,6 +3,7 @@
 :root {
   --background: #0a0a0a;
   --foreground: #ededed;
+  --primary: #22c55e;
   --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 }
 
@@ -19,4 +20,9 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans);
+}
+
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
 }

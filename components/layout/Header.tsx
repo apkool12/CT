@@ -2,6 +2,7 @@
 
 import styled from "@emotion/styled";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const StyledHeader = styled.header`
   display: flex;
@@ -29,10 +30,13 @@ const Nav = styled.nav`
   gap: 32px;
 `;
 
-const NavLink = styled(Link)`
+const NavLink = styled(Link, {
+  shouldForwardProp: (prop) => prop !== "isActive",
+})<{ isActive?: boolean }>`
   font-size: 1.125rem;
-  font-weight: 500;
-  color: ${({ theme }) => theme.colors.muted};
+  font-weight: ${({ isActive }) => (isActive ? 600 : 500)};
+  color: ${({ theme, isActive }) =>
+    isActive ? theme.colors.foreground : theme.colors.muted};
   text-decoration: none;
   &:hover {
     color: ${({ theme }) => theme.colors.foreground};
@@ -73,13 +77,21 @@ const SignUpButton = styled.button`
 `;
 
 export function Header() {
+  const pathname = usePathname();
+
   return (
     <StyledHeader>
       <Logo href="/">CT</Logo>
       <Nav>
-        <NavLink href="/">홈</NavLink>
-        <NavLink href="/problems">문제</NavLink>
-        <NavLink href="/rooms">방 목록</NavLink>
+        <NavLink href="/" isActive={pathname === "/"}>
+          홈
+        </NavLink>
+        <NavLink href="/problems" isActive={pathname === "/problems"}>
+          문제
+        </NavLink>
+        <NavLink href="/rooms" isActive={pathname === "/rooms"}>
+          방 목록
+        </NavLink>
       </Nav>
       <AuthGroup>
         <LoginButton type="button">로그인</LoginButton>
