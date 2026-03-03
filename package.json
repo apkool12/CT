@@ -1,0 +1,30 @@
+{
+  "name": "ct",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "socket": "node socket-server/index.js",
+    "dev:all": "concurrently \"npm run dev\" \"npm run socket\""
+  },
+  "dependencies": {
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "next": "14.2.18",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "socket.io-client": "^4.7.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "concurrently": "^9.1.0",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.18",
+    "typescript": "^5.6.3"
+  }
+}

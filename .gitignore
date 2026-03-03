@@ -1,0 +1,41 @@
+# Dependencies
+node_modules
+socket-server/node_modules
+
+# Next
+.next
+out
+.next/cache
+
+# Env (시크릿·로컬 설정)
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+.env*.local
+
+# Cursor (로컬 규칙·캐시 — 공유할 룰은 문서로 관리)
+.cursor
+
+# IDE / OS
+.idea
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.json
+.DS_Store
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build / 캐시
+dist
+build
+*.tsbuildinfo
+.turbo
+.vercel
+
+# 테스트·커버리지
+coverage
+.nyc_output
