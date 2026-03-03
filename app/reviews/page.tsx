@@ -8,12 +8,12 @@ const Title = styled.h1`
   color: ${({ theme }) => theme.colors.foreground};
 `;
 
-export default function ProblemsPage() {
+export default function ReviewsPage() {
   return (
     <>
-      <Title>문제</Title>
+      <Title>후기</Title>
       <p style={{ marginTop: "0.5rem", color: "#888" }}>
-        Solved.ac 연동 후 문제 목록이 표시됩니다.
+        스터디·코딩테스트 후기가 표시됩니다.
       </p>
     </>
   );

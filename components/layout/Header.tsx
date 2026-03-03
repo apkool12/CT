@@ -86,11 +86,11 @@ export function Header() {
         <NavLink href="/" isActive={pathname === "/"}>
           홈
         </NavLink>
-        <NavLink href="/problems" isActive={pathname === "/problems"}>
-          문제
-        </NavLink>
         <NavLink href="/rooms" isActive={pathname === "/rooms"}>
           방 목록
+        </NavLink>
+        <NavLink href="/reviews" isActive={pathname === "/reviews"}>
+          후기
         </NavLink>
       </Nav>
       <AuthGroup>
