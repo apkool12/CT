@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { Providers } from "./providers";
+import { CommonLayout } from "@/components/layout/CommonLayout";
 
 export const metadata: Metadata = {
   title: "CT | 코딩테스트 플랫폼",
@@ -15,7 +16,9 @@ export default function RootLayout({
   return (
     <html lang="ko">
       <body>
-        <Providers>{children}</Providers>
+        <Providers>
+          <CommonLayout>{children}</CommonLayout>
+        </Providers>
       </body>
     </html>
   );

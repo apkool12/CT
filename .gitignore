@@ -18,6 +18,9 @@ out
 # Cursor (로컬 규칙·캐시 — 공유할 룰은 문서로 관리)
 .cursor
 
+# 로컬 계획 (저장소에 올리지 않음)
+.plan.md
+
 # IDE / OS
 .idea
 .vscode/*
