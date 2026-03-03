@@ -10,5 +10,6 @@ declare module "@emotion/react" {
       border: string;
     };
     radii: { sm: string; md: string; lg: string };
+    fontFamily: { sans: string };
   }
 }
