@@ -1,98 +1,104 @@
 "use client";
 
-import { useState } from "react";
 import styled from "@emotion/styled";
-import { useSocket } from "@/lib/socket";
+import Link from "next/link";
 
-const Title = styled.h1`
-  font-size: 1.75rem;
+const Hero = styled.section`
+  padding: 80px 0 64px;
+  text-align: center;
+`;
+
+const HeroTitle = styled.h1`
+  font-size: clamp(2rem, 5vw, 3rem);
   font-weight: 700;
   color: ${({ theme }) => theme.colors.foreground};
+  line-height: 1.25;
+  letter-spacing: -0.02em;
 `;
 
-const Subtitle = styled.p`
-  margin-top: 0.5rem;
-  font-size: 0.9375rem;
+const HeroSubtitle = styled.p`
+  margin-top: 20px;
+  font-size: 1.125rem;
   color: ${({ theme }) => theme.colors.muted};
+  max-width: 480px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.6;
 `;
 
-const Status = styled.p`
-  margin-top: 1rem;
-  font-size: 0.9375rem;
-`;
-
-const StatusBadge = styled.span<{ connected: boolean }>`
-  color: ${({ connected, theme }) =>
-    connected ? theme.colors.primary : "#ef4444"};
-`;
-
-const Form = styled.div`
-  margin-top: 1.5rem;
-  display: flex;
-  gap: 0.5rem;
-  align-items: center;
-`;
-
-const Input = styled.input`
-  padding: 0.5rem 0.75rem;
-  border-radius: ${({ theme }) => theme.radii.md};
-  border: 1px solid ${({ theme }) => theme.colors.border};
-  background: #111;
-  color: ${({ theme }) => theme.colors.foreground};
-  font-size: 0.9375rem;
-  width: 100%;
-  max-width: 320px;
-  &:focus {
-    outline: none;
-    border-color: ${({ theme }) => theme.colors.primary};
-  }
-`;
-
-const Button = styled.button`
-  padding: 0.5rem 1rem;
-  border-radius: ${({ theme }) => theme.radii.md};
-  border: none;
-  background: ${({ theme }) => theme.colors.primary};
+const CTA = styled(Link)`
+  display: inline-block;
+  margin-top: 32px;
+  padding: 14px 28px;
+  font-size: 1.0625rem;
+  font-weight: 600;
   color: #fff;
-  font-size: 0.9375rem;
-  font-weight: 500;
-  cursor: pointer;
+  background: ${({ theme }) => theme.colors.primary};
+  border-radius: ${({ theme }) => theme.radii.md};
+  text-decoration: none;
+  transition: opacity 0.2s;
   &:hover {
     opacity: 0.9;
   }
 `;
 
-export default function Home() {
-  const { isConnected, message, sendMessage } = useSocket();
-  const [input, setInput] = useState("");
+const Features = styled.section`
+  padding: 64px 0 80px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+`;
 
+const FeatureCard = styled.article`
+  padding: 28px 24px;
+  background: #111;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-radius: ${({ theme }) => theme.radii.lg};
+`;
+
+const FeatureTitle = styled.h3`
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: ${({ theme }) => theme.colors.foreground};
+  margin-bottom: 8px;
+`;
+
+const FeatureDesc = styled.p`
+  font-size: 0.9375rem;
+  color: ${({ theme }) => theme.colors.muted};
+  line-height: 1.5;
+`;
+
+export default function Home() {
   return (
     <>
-      <Title>CT · 코딩테스트 플랫폼</Title>
-      <Subtitle>실시간 채팅 · 랭킹 (Socket.IO 연동)</Subtitle>
-      <Status>
-        Socket 상태:{" "}
-        <StatusBadge connected={isConnected}>
-          {isConnected ? "연결됨" : "연결 끊김"}
-        </StatusBadge>
-      </Status>
-      {message && (
-        <Subtitle style={{ marginTop: "0.5rem" }}>
-          마지막 수신: {message}
-        </Subtitle>
-      )}
-      <Form>
-        <Input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          onKeyDown={(e) => e.key === "Enter" && sendMessage(input)}
-          placeholder="메시지 입력 후 Enter"
-        />
-        <Button type="button" onClick={() => sendMessage(input)}>
-          전송
-        </Button>
-      </Form>
+      <Hero>
+        <HeroTitle>함께 푸는 코딩테스트</HeroTitle>
+        <HeroSubtitle>
+          백준 문제로 스터디원과 실시간으로 경쟁하고, 채팅으로 힌트를 나누세요.
+        </HeroSubtitle>
+        <CTA href="/rooms">방 만들기</CTA>
+      </Hero>
+      <Features>
+        <FeatureCard>
+          <FeatureTitle>실시간 랭킹</FeatureTitle>
+          <FeatureDesc>
+            같은 방에서 푸는 동안 순위가 실시간으로 반영됩니다.
+          </FeatureDesc>
+        </FeatureCard>
+        <FeatureCard>
+          <FeatureTitle>실시간 채팅</FeatureTitle>
+          <FeatureDesc>
+            문제 풀이 중 힌트와 의견을 나누며 함께 성장할 수 있습니다.
+          </FeatureDesc>
+        </FeatureCard>
+        <FeatureCard>
+          <FeatureTitle>백준 문제 연동</FeatureTitle>
+          <FeatureDesc>
+            Solved.ac·백준 문제를 활용해 다양한 난이도로 연습할 수 있습니다.
+          </FeatureDesc>
+        </FeatureCard>
+      </Features>
     </>
   );
 }
