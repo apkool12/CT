@@ -11,6 +11,9 @@ const theme = {
     border: "#333",
   },
   radii: { sm: "4px", md: "6px", lg: "8px" },
+  fontFamily: {
+    sans: '"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
+  },
 } as const;
 
 export function Providers({ children }: { children: React.ReactNode }) {
