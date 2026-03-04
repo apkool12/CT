@@ -17,7 +17,7 @@ const HeroTitle = styled.h1`
 `;
 
 const HeroSubtitle = styled.p`
-  margin-top: 20px;
+  margin-top: 12px;
   font-size: 1.125rem;
   color: ${({ theme }) => theme.colors.muted};
   max-width: 480px;
@@ -28,8 +28,10 @@ const HeroSubtitle = styled.p`
 
 const CTA = styled(Link)`
   display: inline-block;
-  margin-top: 32px;
-  padding: 14px 28px;
+  margin-top: 40px;
+  padding: 12px 24px;
+  min-height: 44px;
+  box-sizing: border-box;
   font-size: 1.0625rem;
   font-weight: 600;
   color: #fff;
@@ -37,6 +39,7 @@ const CTA = styled(Link)`
   border-radius: ${({ theme }) => theme.radii.md};
   text-decoration: none;
   transition: opacity 0.2s;
+  line-height: 1.25;
   &:hover {
     opacity: 0.9;
   }
@@ -47,11 +50,12 @@ const Features = styled.section`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
+  align-items: start;
 `;
 
 const FeatureCard = styled.article`
   padding: 28px 24px;
-  background: #111;
+  background: ${({ theme }) => theme.colors.surface};
   border: 1px solid ${({ theme }) => theme.colors.border};
   border-radius: ${({ theme }) => theme.radii.lg};
 `;

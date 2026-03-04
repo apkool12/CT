@@ -5,9 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const StyledHeader = styled.header`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   height: 80px;
   padding: 0 40px;
   background: ${({ theme }) => theme.colors.background};
@@ -27,6 +27,7 @@ const Logo = styled(Link)`
 const Nav = styled.nav`
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 32px;
 `;
 
@@ -46,6 +47,7 @@ const NavLink = styled(Link, {
 const AuthGroup = styled.div`
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 24px;
 `;
 
@@ -64,13 +66,16 @@ const LoginButton = styled.button`
 
 const SignUpButton = styled.button`
   font-size: 1.0625rem;
-  font-weight: 500;
+  font-weight: 600;
   color: #fff;
   background: ${({ theme }) => theme.colors.primary};
   border: none;
   border-radius: ${({ theme }) => theme.radii.md};
   cursor: pointer;
-  padding: 10px 24px;
+  padding: 12px 24px;
+  min-height: 44px;
+  box-sizing: border-box;
+  line-height: 1.25;
   &:hover {
     opacity: 0.9;
   }
@@ -81,7 +86,7 @@ export function Header() {
 
   return (
     <StyledHeader>
-      <Logo href="/">CT</Logo>
+      <Logo href="/">Algo</Logo>
       <Nav>
         <NavLink href="/" isActive={pathname === "/"}>
           홈

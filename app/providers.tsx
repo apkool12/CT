@@ -4,11 +4,12 @@ import { ThemeProvider } from "@emotion/react";
 
 const theme = {
   colors: {
-    background: "#0a0a0a",
-    foreground: "#ededed",
+    background: "#faf8f5",
+    foreground: "#1a1a1a",
     primary: "#22c55e",
-    muted: "#888",
-    border: "#333",
+    muted: "#6b6b6b",
+    border: "#e5e2de",
+    surface: "#ffffff",
   },
   radii: { sm: "4px", md: "6px", lg: "8px" },
   fontFamily: {
