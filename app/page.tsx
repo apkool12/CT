@@ -4,23 +4,32 @@ import styled from "@emotion/styled";
 import Link from "next/link";
 
 const Hero = styled.section`
-  padding: 80px 0 64px;
+  padding: 80px 0 140px;
   text-align: center;
+  background: linear-gradient(
+    180deg,
+    ${({ theme }) => theme.colors.primary} 0%,
+    #1a1a1a 100%
+  );
+  margin-bottom: -60px;
+  border-bottom-left-radius: ${({ theme }) => `calc(${theme.radii.lg} + 10px)`};
+  border-bottom-right-radius: ${({ theme }) =>
+    `calc(${theme.radii.lg} + 10px)`};
 `;
 
 const HeroTitle = styled.h1`
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(2.25rem, 6vw, 3.5rem);
   font-weight: 700;
-  color: ${({ theme }) => theme.colors.foreground};
+  color: #fff;
   line-height: 1.25;
   letter-spacing: -0.02em;
 `;
 
 const HeroSubtitle = styled.p`
-  margin-top: 12px;
+  margin-top: 25px;
   font-size: 1.125rem;
-  color: ${({ theme }) => theme.colors.muted};
-  max-width: 480px;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 520px;
   margin-left: auto;
   margin-right: auto;
   line-height: 1.6;
@@ -35,18 +44,21 @@ const CTA = styled(Link)`
   font-size: 1.0625rem;
   font-weight: 600;
   color: #fff;
-  background: ${({ theme }) => theme.colors.primary};
+  background: rgba(255, 255, 255, 0.2);
+  border: 2px solid rgba(255, 255, 255, 0.9);
   border-radius: ${({ theme }) => theme.radii.md};
   text-decoration: none;
-  transition: opacity 0.2s;
+  transition:
+    opacity 0.2s,
+    background 0.2s;
   line-height: 1.25;
   &:hover {
-    opacity: 0.9;
+    background: rgba(255, 255, 255, 0.3);
   }
 `;
 
 const Features = styled.section`
-  padding: 64px 0 80px;
+  padding: 84px 0 80px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 24px;
@@ -77,9 +89,11 @@ export default function Home() {
   return (
     <>
       <Hero>
-        <HeroTitle>함께 푸는 코딩테스트</HeroTitle>
+        <HeroTitle>지식에서 실력으로</HeroTitle>
         <HeroSubtitle>
-          백준 문제로 스터디원과 실시간으로 경쟁하고, 채팅으로 힌트를 나누세요.
+          함께 풀고, 겨루고, 나누는
+          <br />
+          스터디 코딩테스트 플랫폼 Algo
         </HeroSubtitle>
         <CTA href="/rooms">방 만들기</CTA>
       </Hero>

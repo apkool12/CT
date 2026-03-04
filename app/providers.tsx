@@ -4,14 +4,14 @@ import { ThemeProvider } from "@emotion/react";
 
 const theme = {
   colors: {
-    background: "#faf8f5",
+    background: "#fafafa",
     foreground: "#1a1a1a",
-    primary: "#22c55e",
+    primary: "#2563eb",
     muted: "#6b6b6b",
     border: "#e5e2de",
     surface: "#ffffff",
   },
-  radii: { sm: "4px", md: "6px", lg: "8px" },
+  radii: { sm: "6px", md: "8px", lg: "12px" },
   fontFamily: {
     sans: '"Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif',
   },

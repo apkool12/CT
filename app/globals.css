@@ -1,9 +1,9 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
 
 :root {
-  --background: #faf8f5;
+  --background: #fafafa;
   --foreground: #1a1a1a;
-  --primary: #22c55e;
+  --primary: #2563eb;
   --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
 }
 
