@@ -4,7 +4,9 @@
   --background: #fafafa;
   --foreground: #1a1a1a;
   --primary: #2563eb;
-  --font-sans: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
+  --font-sans:
+    "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+    system-ui, sans-serif;
 }
 
 * {

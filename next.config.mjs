@@ -1,4 +1,12 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {};
+const nextConfig = {
+  compiler: {
+    emotion: {
+      sourceMap: true,
+      autoLabel: "dev-only",
+      labelFormat: "[local]",
+    },
+  },
+};
 
 export default nextConfig;
