@@ -4,19 +4,26 @@ import styled from "@emotion/styled";
 import Link from "next/link";
 
 const StyledHeader = styled.header`
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  justify-content: space-between;
   height: 64px;
   padding: 0 40px;
   background: #3d363f;
   border-radius: 0 0 30px 30px;
 `;
 
+const Spacer = styled.span`
+  /* 빈 공간 - 그리드 균형용 */
+`;
+
 const Logo = styled(Link)`
-  font-size: 0.9375rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.9);
+  justify-self: center;
+  font-size: 1.2rem;
+  font-style: normal;
+  font-weight: 100;
+  line-height: normal;
+  color: rgba(255, 255, 255);
   text-decoration: none;
   &:hover {
     color: #fff;
@@ -26,7 +33,9 @@ const Logo = styled(Link)`
 const AuthGroup = styled.div`
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   gap: 16px;
+  justify-self: end;
 `;
 
 const LoginButton = styled.button`
@@ -46,7 +55,7 @@ const SignUpButton = styled(Link)`
   font-size: 0.9375rem;
   font-weight: 600;
   color: #fff;
-  background: #2563eb;
+  background: #206a96;
   border: none;
   border-radius: 6px;
   cursor: pointer;
@@ -61,7 +70,8 @@ const SignUpButton = styled(Link)`
 export function Header() {
   return (
     <StyledHeader>
-      <Logo href="/">aIgo</Logo>
+      <Spacer />
+      <Logo href="/">MOBICOM</Logo>
       <AuthGroup>
         <LoginButton type="button">로그인</LoginButton>
         <SignUpButton href="/rooms">회원가입</SignUpButton>

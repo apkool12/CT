@@ -2,6 +2,7 @@
 
 import styled from "@emotion/styled";
 import Link from "next/link";
+import Image from "next/image";
 
 // Full-bleed: break out of container to span viewport
 const fullBleed = `
@@ -17,8 +18,8 @@ const Hero = styled.section`
   padding: 72px 24px 100px;
   background: linear-gradient(180deg, #291d23 0%, #3f9dd3 65%, #ffffff 100%);
   margin-bottom: -48px;
-  border-bottom-left-radius: 24px;
-  border-bottom-right-radius: 24px;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
 `;
 
 const HeroInner = styled.div`
@@ -28,6 +29,8 @@ const HeroInner = styled.div`
   grid-template-columns: 1fr;
   gap: 40px;
   align-items: center;
+  position: relative;
+  z-index: 1;
   @media (min-width: 900px) {
     grid-template-columns: 1fr 1fr;
     gap: 56px;
@@ -38,36 +41,52 @@ const HeroContent = styled.div``;
 
 const HeroBrand = styled.span`
   display: block;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-weight: 600;
-  color: rgba(255, 255, 255, 0.85);
-  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 16px;
 `;
 
 const HeroTitle = styled.h1`
-  font-size: clamp(2rem, 5vw, 3rem);
+  font-size: clamp(3rem, 5vw, 5rem);
   font-weight: 700;
   color: #fff;
-  line-height: 1.3;
+  line-height: 1.35;
   letter-spacing: -0.02em;
+  text-shadow: 0 2px 2px rgba(0, 0, 0, 0.05);
+  font-style: normal;
+  font-weight: 900;
 `;
 
-const HeroBadge = styled.span`
-  display: inline-block;
+const HeroDescBlock = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 10px;
   margin-top: 16px;
-  padding: 6px 12px;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: #fff;
-  background: #e53e3e;
-  border-radius: 6px;
+  margin-bottom: 12px;
+`;
+
+const HeroDescHighlight = styled.span`
+  flex-shrink: 0;
+  width: 70px;
+  height: 1.25em;
+  margin-left: -5px;
+  background: linear-gradient(90deg, #f1b3bb 0%, #64b0db 100%);
+  border-radius: 2px;
+`;
+
+const HeroDescLabel = styled.span`
+  margin-left: -74px;
+  font-size: 0.9375rem;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.95);
 `;
 
 const HeroDesc = styled.p`
-  margin-top: 16px;
   font-size: 1rem;
   color: rgba(255, 255, 255, 0.9);
-  line-height: 1.65;
+  font-weight: 300;
+  line-height: 1.7;
 `;
 
 const HeroCTA = styled(Link)`
@@ -75,20 +94,21 @@ const HeroCTA = styled(Link)`
   align-items: center;
   justify-content: center;
   gap: 8px;
+  margin-left: -14px;
   margin-top: 28px;
-  padding: 14px 28px;
+  padding: 14px 73px;
   min-height: 48px;
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 300;
   color: #fff;
-  background: linear-gradient(90deg, #e53e3e 0%, #2563eb 100%);
-  border: none;
-  border-radius: 8px;
+  border-radius: 50px;
+  border: 0.1px solid #ffffff74;
+  background: linear-gradient(90deg, #3fa3d9 0%, #a8c7e3 52.4%, #f4a6b3 100%);
   text-decoration: none;
   transition:
     opacity 0.2s,
     transform 0.15s;
-  box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+  box-shadow: 0 4px 20px rgba(56, 189, 248, 0.3);
   &:hover {
     opacity: 0.95;
     transform: translateY(-1px);
@@ -97,15 +117,15 @@ const HeroCTA = styled(Link)`
 
 const HeroPreview = styled.div`
   aspect-ratio: 4/3;
-  background: rgba(255, 255, 255, 0.08);
-  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: #fff;
+  border: 2px solid rgba(255, 255, 255, 0.9);
   border-radius: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
-  color: rgba(255, 255, 255, 0.5);
-  font-size: 0.9375rem;
-  min-height: 240px;
+  overflow: hidden;
+  min-height: 260px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
 `;
 
 // ========== Feature cards (overlapping) ==========
@@ -321,8 +341,14 @@ export default function Home() {
         <HeroInner>
           <HeroContent>
             <HeroBrand>aIgo</HeroBrand>
-            <HeroTitle>알고 풀면, 더 재밌습니다</HeroTitle>
-            <HeroBadge>코딩테스트</HeroBadge>
+            <HeroTitle>
+              알고 풀면,
+              <br />더 재밌습니다
+            </HeroTitle>
+            <HeroDescBlock>
+              <HeroDescHighlight aria-hidden />
+              <HeroDescLabel>코딩테스트 플랫폼.</HeroDescLabel>
+            </HeroDescBlock>
             <HeroDesc>
               문제를 함께 풀고, 채팅으로 소통하고, 실시간 랭킹으로 경쟁하세요.
             </HeroDesc>
@@ -331,7 +357,16 @@ export default function Home() {
               <span aria-hidden>→</span>
             </HeroCTA>
           </HeroContent>
-          <HeroPreview>이미지 영역 (추후 추가)</HeroPreview>
+          <HeroPreview>
+            <Image
+              src="/hero-illustration.png"
+              alt="aIgo 코딩테스트 플랫폼 일러스트"
+              width={520}
+              height={390}
+              style={{ width: "100%", height: "100%", objectFit: "contain" }}
+              priority
+            />
+          </HeroPreview>
         </HeroInner>
       </Hero>
 
