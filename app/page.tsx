@@ -15,12 +15,7 @@ const fullBleed = `
 const Hero = styled.section`
   ${fullBleed}
   padding: 72px 24px 100px;
-  background: linear-gradient(
-    180deg,
-    #1a1a1a 0%,
-    #2d3748 40%,
-    #4a90d9 100%
-  );
+  background: linear-gradient(180deg, #291d23 0%, #3f9dd3 65%, #ffffff 100%);
   margin-bottom: -48px;
   border-bottom-left-radius: 24px;
   border-bottom-right-radius: 24px;
@@ -90,7 +85,9 @@ const HeroCTA = styled(Link)`
   border: none;
   border-radius: 8px;
   text-decoration: none;
-  transition: opacity 0.2s, transform 0.15s;
+  transition:
+    opacity 0.2s,
+    transform 0.15s;
   box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
   &:hover {
     opacity: 0.95;
@@ -117,12 +114,6 @@ const CardsSection = styled.section`
   max-width: 1120px;
   margin: 0 auto;
   position: relative;
-  background: linear-gradient(
-    180deg,
-    #4a90d9 0%,
-    #63b3ed 30%,
-    #90cdf4 100%
-  );
   border-radius: 24px;
   margin-top: -24px;
 `;
@@ -216,12 +207,7 @@ const FlowCardIcon = styled.div`
 const FinalCta = styled.section`
   ${fullBleed}
   padding: 80px 24px 100px;
-  background: linear-gradient(
-    180deg,
-    #1a1a1a 0%,
-    #1e3a5f 50%,
-    #1e3a8a 100%
-  );
+  background: linear-gradient(113deg, #ffffff 19.24%, #00263b 60.58%);
   position: relative;
   overflow: hidden;
   &::after {
@@ -249,16 +235,24 @@ const FinalCtaWords = styled.div`
 `;
 
 const FinalCtaWord = styled.span`
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: rgba(255, 255, 255, 0.6);
-  letter-spacing: 0.05em;
+  text-align: center;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  -webkit-text-stroke-width: 0.5px;
+  -webkit-text-stroke-color: rgba(255, 255, 255, 0.36);
+  background: linear-gradient(180deg, #fff 0%, #c8ddff 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 100;
+  line-height: normal;
 `;
 
 const FinalCtaLine = styled.hr`
   border: none;
   height: 1px;
-  background: rgba(255, 255, 255, 0.25);
+  background: #ffffff;
   margin: 24px 0;
 `;
 
@@ -285,7 +279,9 @@ const FinalCtaButton = styled(Link)`
   border: none;
   border-radius: 8px;
   text-decoration: none;
-  transition: opacity 0.2s, transform 0.15s;
+  transition:
+    opacity 0.2s,
+    transform 0.15s;
   box-shadow: 0 4px 20px rgba(37, 99, 235, 0.4);
   &:hover {
     opacity: 0.95;

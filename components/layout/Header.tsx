@@ -9,8 +9,8 @@ const StyledHeader = styled.header`
   justify-content: space-between;
   height: 64px;
   padding: 0 40px;
-  background: #1a1a1a;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: #3d363f;
+  border-radius: 0 0 30px 30px;
 `;
 
 const Logo = styled(Link)`
