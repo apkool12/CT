@@ -3,6 +3,7 @@
 import styled from "@emotion/styled";
 import Link from "next/link";
 import Image from "next/image";
+import heroImage from "@/app/assets/landing/hero.png";
 
 // Full-bleed: break out of container to span viewport
 const fullBleed = `
@@ -16,7 +17,11 @@ const fullBleed = `
 const Hero = styled.section`
   ${fullBleed}
   padding: 72px 24px 100px;
-  background: linear-gradient(180deg, #291d23 0%, #3f9dd3 65%, #ffffff 100%);
+  background-image: url("/hero-effect.png"),
+    linear-gradient(180deg, #291d23 0%, #3f9dd3 65%, #ffffff 100%);
+  background-size: cover, 100% 100%;
+  background-position: 50% 50%, 0 0;
+  background-repeat: no-repeat, repeat;
   margin-bottom: -48px;
   border-top-left-radius: 24px;
   border-top-right-radius: 24px;
@@ -40,15 +45,23 @@ const HeroInner = styled.div`
 const HeroContent = styled.div``;
 
 const HeroBrand = styled.span`
+  margin-top: 92px;
   display: block;
-  font-size: 0.9375rem;
+  font-size: 3rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.95);
   margin-bottom: 16px;
 `;
 
+const HeroBrandGradient = styled.span`
+  background: linear-gradient(180deg, #f4a6b3 0%, #3fa3d9 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
+
 const HeroTitle = styled.h1`
-  font-size: clamp(3rem, 5vw, 5rem);
+  font-size: 6.2rem;
   font-weight: 700;
   color: #fff;
   line-height: 1.35;
@@ -63,12 +76,18 @@ const HeroDescBlock = styled.div`
   align-items: center;
   gap: 10px;
   margin-top: 16px;
-  margin-bottom: 12px;
+`;
+
+const HeroDesc = styled.p`
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 300;
+  line-height: 1.7;
 `;
 
 const HeroDescHighlight = styled.span`
   flex-shrink: 0;
-  width: 70px;
+  width: 85px;
   height: 1.25em;
   margin-left: -5px;
   background: linear-gradient(90deg, #f1b3bb 0%, #64b0db 100%);
@@ -76,17 +95,10 @@ const HeroDescHighlight = styled.span`
 `;
 
 const HeroDescLabel = styled.span`
-  margin-left: -74px;
-  font-size: 0.9375rem;
+  margin-left: -89px;
+  font-size: 1.2rem;
   font-weight: 300;
   color: rgba(255, 255, 255, 0.95);
-`;
-
-const HeroDesc = styled.p`
-  font-size: 1rem;
-  color: rgba(255, 255, 255, 0.9);
-  font-weight: 300;
-  line-height: 1.7;
 `;
 
 const HeroCTA = styled(Link)`
@@ -96,9 +108,9 @@ const HeroCTA = styled(Link)`
   gap: 8px;
   margin-left: -14px;
   margin-top: 28px;
-  padding: 14px 73px;
+  padding: 17px 105px;
   min-height: 48px;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 300;
   color: #fff;
   border-radius: 50px;
@@ -115,22 +127,39 @@ const HeroCTA = styled(Link)`
   }
 `;
 
-const HeroPreview = styled.div`
-  aspect-ratio: 4/3;
+const HeroPreviewWrap = styled.div`
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+  transform: translate(60px, 120px);
+`;
+
+const HeroPreviewBg = styled.div`
+  position: absolute;
+  inset: 0;
   background: #fff;
-  border: 2px solid rgba(255, 255, 255, 0.9);
-  border-radius: 16px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  border-top-left-radius: 50px;
+  transform: translate(-10px, -10px);
+  z-index: 0;
+`;
+
+const HeroPreview = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 500px;
+  box-shadow: -3px -3px 2px 0 rgba(0, 0, 0, 0.25);
+  border-top-left-radius: 50px;
   overflow: hidden;
-  min-height: 260px;
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  z-index: 1;
+  & img {
+    object-fit: cover;
+  }
 `;
 
 // ========== Feature cards (overlapping) ==========
 const CardsSection = styled.section`
-  padding: 64px 24px 80px;
+  padding: 64px 24px 770px;
   max-width: 1120px;
   margin: 0 auto;
   position: relative;
@@ -295,9 +324,9 @@ const FinalCtaButton = styled(Link)`
   font-size: 1.0625rem;
   font-weight: 600;
   color: #fff;
-  background: linear-gradient(90deg, #48bb78 0%, #2563eb 100%);
-  border: none;
-  border-radius: 8px;
+  border-radius: 50px;
+  border: 0.5px solid #fff;
+  background: linear-gradient(90deg, #96b3a4 0%, #55699e 52.4%, #1285c7 100%);
   text-decoration: none;
   transition:
     opacity 0.2s,
@@ -340,7 +369,9 @@ export default function Home() {
       <Hero>
         <HeroInner>
           <HeroContent>
-            <HeroBrand>aIgo</HeroBrand>
+            <HeroBrand>
+              <HeroBrandGradient>AI</HeroBrandGradient>go
+            </HeroBrand>
             <HeroTitle>
               알고 풀면,
               <br />더 재밌습니다
@@ -357,16 +388,16 @@ export default function Home() {
               <span aria-hidden>→</span>
             </HeroCTA>
           </HeroContent>
-          <HeroPreview>
-            <Image
-              src="/hero-illustration.png"
-              alt="aIgo 코딩테스트 플랫폼 일러스트"
-              width={520}
-              height={390}
-              style={{ width: "100%", height: "100%", objectFit: "contain" }}
-              priority
-            />
-          </HeroPreview>
+          <HeroPreviewWrap>
+            <HeroPreviewBg aria-hidden />
+            <HeroPreview>
+              <Image
+                src={heroImage}
+                alt="aIgo 코딩테스트 플랫폼 일러스트"
+                fill
+              />
+            </HeroPreview>
+          </HeroPreviewWrap>
         </HeroInner>
       </Hero>
 
