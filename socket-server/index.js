@@ -7,7 +7,7 @@ const httpServer = createServer(app);
 
 const io = new Server(httpServer, {
   cors: {
-    origin: process.env.CORS_ORIGIN ?? "http://localhost:3000",
+    origin: true,
     methods: ["GET", "POST"],
   },
 });
@@ -23,9 +23,10 @@ io.on("connection", (socket) => {
     socket.leave(roomId);
   });
 
-  socket.on("chat:message", ({ roomId, text }) => {
+  socket.on("chat:message", ({ roomId, text, displayName }) => {
     const target = roomId ?? "lobby";
-    io.to(target).emit("chat:message", { text, from: socket.id });
+    const name = displayName?.trim() || "익명";
+    io.to(target).emit("chat:message", { text, from: socket.id, displayName: name });
   });
 
   socket.on("disconnect", () => {
