@@ -1,0 +1,6 @@
+export const fullBleed = `
+  width: 100vw;
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+`;
